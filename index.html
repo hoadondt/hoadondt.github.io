@@ -1,5 +1,24 @@
 <form>
-  <label for="code">Nhập mã tra cứu hoá đơn:</label>
+  <label for="code">Nhập mã:</label>
   <input type="text" id="code" name="code">
-  <button type="button" onclick="location.href=`regedit?key=${document.getElementById('code').value}`">Tra cứu</button>
+  <button type="button" onclick="checkCode()">Tra cứu</button>
 </form>
+
+<script>
+function checkCode() {
+  var code = document.getElementById('code').value;
+  var href = `regedit?key=${code}`;
+  
+  // Kiểm tra xem href có tồn tại hay không
+  var xhr = new XMLHttpRequest();
+  xhr.open("HEAD", href);
+  xhr.onload = function() {
+    if (xhr.status == 200) {
+      location.href = href;
+    } else {
+      alert("Sai mã");
+    }
+  }
+  xhr.send();
+}
+</script>
