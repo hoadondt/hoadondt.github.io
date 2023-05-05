@@ -1,5 +1,26 @@
-<form>
-  <label for="code">Nhập mã:</label>
-  <input type="text" id="code" name="code">
-  <button type="button" onclick="location.href=`regedit?key=${document.getElementById('code').value}`">Tra cứu</button>
-</form>
+<!-- Form nhập mã -->
+<label for="code">Nhập mã:</label>
+<input type="text" id="code" name="code">
+<button type="button" onclick="checkCode()">Tra cứu</button>
+
+<script>
+function checkCode() {
+  var code = document.getElementById('code').value;
+  
+  // Xây dựng URL mới từ trang hiện tại và mã nhập vào
+  var href = window.location.href + code;
+
+  // Kiểm tra xem href có tồn tại hay không
+  var xhr = new XMLHttpRequest();
+  xhr.open("HEAD", href);
+  xhr.onload = function() {
+    if (xhr.status == 200) {
+      // Nếu tồn tại thì chuyển hướng đến href
+      location.href = href;
+    } else {
+      alert("Sai mã");
+    }
+  }
+  xhr.send();
+}
+</script>
