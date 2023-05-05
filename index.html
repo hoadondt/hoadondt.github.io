@@ -22,11 +22,6 @@ function checkCode() {
       // Nếu tồn tại thì kiểm tra xem có phải là PDF hay không
       xhr.open("GET", href);
       xhr.responseType = "blob";
-  xhr.onload = function() {
-    if (xhr.status == 200) {
-      // Nếu tồn tại thì kiểm tra xem có phải là PDF hay không
-      xhr.open("GET", href);
-      xhr.responseType = "blob";
       xhr.onload = function() {
         if (xhr.response.type === "application/pdf") {
           // Nếu là PDF thì hiển thị nội dung PDF
