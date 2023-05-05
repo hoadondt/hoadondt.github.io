@@ -23,15 +23,15 @@ function checkCode() {
       xhr.open("GET", href);
       xhr.responseType = "blob";
       xhr.onload = function() {
-        if (xhr.response.type === "application/pdf") {
+        //if (xhr.response.type === "application/pdf") {
           // Nếu là PDF thì hiển thị nội dung PDF
           var blob = new Blob([xhr.response], {type: "application/pdf"});
           var url = URL.createObjectURL(blob);
           window.open(url);
-        } else {
+        //} else {
           // Nếu không phải PDF thì hiển thị cảnh báo
-          alert("Không phải hoá đơn");
-        }
+        //  alert("Không phải hoá đơn");
+        //}
       };
       xhr.send();
     } else {
