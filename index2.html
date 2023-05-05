@@ -1,0 +1,30 @@
+<form>
+  <input type="text" id="code" placeholder="Nhập mã...">
+  <button type="submit" onclick="submitCode()">Tra cứu</button>
+</form>
+
+function submitCode() {
+  var code = document.getElementById('code').value;
+
+  // Kiểm tra nếu giá trị rỗng hoặc không hợp lệ
+  if (!code) {
+    alert("Vui lòng nhập mã!");
+    return;
+  }
+
+  // Xây dựng URL mới từ mã nhập vào
+  var href = location.href + "/" + code;
+
+  // Kiểm tra xem href có tồn tại hay không
+  var xhr = new XMLHttpRequest();
+  xhr.open("HEAD", href);
+  xhr.onload = function() {
+    if (xhr.status == 200) {
+      location.href = href;
+    } else {
+      alert("Sai mã");
+    }
+  }
+  xhr.send();
+}
+</script>
